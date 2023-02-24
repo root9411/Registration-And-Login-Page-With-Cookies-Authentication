@@ -1,0 +1,68 @@
+﻿@model WebApplication2.Models.LoginUser;
+@{
+    ViewData["Title"]= "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication2.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-md-9">
+             <form asp-controller="Access" asp-action="Login" method="post">
+                <h1>Login</h1>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                 <div class="form-group1">
+                    <label asp-for="Uemail" class="control-label"></label>
+                    <input type="email" asp-for="Uemail" />
+                    <span asp-validation-for="Uemail" class="text-danger"></span>
+                 </div>
+
+                <div class="form-group1">
+                    <label asp-for="Pwd" class="control-label"></label>
+                    <input type="password" asp-for="Pwd" />
+                    <span asp-validation-for="Pwd" class="text-danger"></span>
+                </div>
+
+                <div class="form-group1">
+                    <label>
+                        <input type="checkbox" asp-for="KeepLoggedIn" />
+                        Keep me logged In.
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+
+                @if (ViewData["ValidateMessage"] != null)
+                {
+                    <br />
+                    <br />
+                    <br />
+                    <label>@ViewData["ValidateMessage"]</label>
+                }
+
+                <div>
+                    <a asp-controller="Registration" asp-action="Create">Click Here to Register the User</a>
+                </div>
+             
+             </form>
+        </div>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
